@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Designe — Protótipo</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F7F3F0;--card:#fff;--ink:#0B0B0E;--mut:#6B6B72;--line:#E4DFDA;--red:#F0302B;--soft:#FDE9E7;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0B0B0E;--card:#17171C;--ink:#F7F3F0;--mut:#9A9AA2;--line:#2A2A31;--soft:#2A1517}}
+:root[data-theme="dark"]{--bg:#0B0B0E;--card:#17171C;--ink:#F7F3F0;--mut:#9A9AA2;--line:#2A2A31;--soft:#2A1517}
+*{box-sizing:border-box;margin:0}
+html{scroll-padding-top:env(safe-area-inset-top,0px);-webkit-tap-highlight-color:transparent;scroll-behavior:smooth}
+body{font-family:'Poppins',system-ui,-apple-system,'Segoe UI',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden;transition:background .3s,color .3s;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:25}
+a,button{font-family:inherit}
+.side{position:fixed;left:0;top:0;bottom:0;width:236px;background:#0B0B0E;color:#fff;padding:calc(26px + env(safe-area-inset-top,0px)) 16px calc(24px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;z-index:30}
+.logo{letter-spacing:.22em;font-weight:500;margin:0 10px 32px}
+.nv{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:12px;color:#B5B5BC;cursor:pointer;margin-bottom:6px;font-size:.9rem;transition:.25s;border:0;background:none;text-align:left;width:100%}
+.nv:hover{background:#ffffff12;color:#fff;transform:translateX(3px)}
+.nv.on{background:linear-gradient(90deg,#7C1C19,#B22822);color:#fff}
+.quote{margin-top:auto;font-size:.78rem;color:#9A9AA2;padding:10px}.quote b{color:#fff;font-weight:500}.quote hr{border:0;height:2px;width:40px;background:var(--red);margin-top:10px}
+.main{margin-left:236px;padding:0 32px 56px;max-width:1280px}
+.tb{position:sticky;top:env(safe-area-inset-top,0px);z-index:26;background:var(--bg);display:flex;align-items:center;gap:12px;padding:16px 0}
+.lg{display:none;letter-spacing:.18em;font-weight:600;font-size:.8rem}
+.sw{position:relative;flex:1;max-width:460px}
+.sw input{width:100%;padding:11px 14px 11px 42px;border-radius:14px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:.85rem;outline:0;transition:.2s}
+.sw input:focus{border-color:var(--red);box-shadow:0 0 0 3px #F0302B22}
+.si{position:absolute;left:14px;top:11px;color:var(--mut)}
+#sr{position:absolute;left:0;right:0;top:50px;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 40px #0003;overflow:hidden;z-index:40}
+#sr div{padding:11px 16px;cursor:pointer;font-size:.85rem;display:flex;justify-content:space-between;gap:8px}#sr div:hover{background:var(--soft)}#sr small{color:var(--mut)}
+.sp{flex:1}
+.ib{position:relative;width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;display:grid;place-items:center;transition:.2s}.ib:hover{border-color:var(--red)}
+.dot{position:absolute;top:9px;right:10px;width:8px;height:8px;background:var(--red);border-radius:50%}
+.nw{position:relative}#np{position:absolute;right:0;top:50px;width:min(300px,86vw);background:var(--card);border:1px solid var(--line);border-radius:16px;padding:8px;box-shadow:0 18px 40px #0003;opacity:0;transform:translateY(-8px);pointer-events:none;transition:.25s;z-index:40}#np.on{opacity:1;transform:none;pointer-events:auto}#np p{padding:10px 12px;font-size:.82rem;border-radius:10px}#np p:hover{background:var(--soft)}
+.me{display:flex;align-items:center;gap:8px;border:0;background:none;color:var(--ink);cursor:pointer;font-size:.85rem}.me .art,.av .art{width:100%;height:100%;display:block}.me span{width:34px;height:34px;border-radius:50%;overflow:hidden;border:2px solid var(--red)}
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:center;background:linear-gradient(120deg,var(--card),var(--soft));border:1px solid var(--line);border-radius:26px;padding:34px;overflow:hidden}
+h1{font-size:clamp(2.1rem,5vw,3.6rem);line-height:1.05;font-weight:700;margin:14px 0}h1 b{color:var(--red)}
+.h{font-size:1.7rem}.lead{color:var(--mut);max-width:440px;margin-bottom:20px;font-size:.92rem}.m{color:var(--mut);font-size:.82rem}
+.ha{border-radius:20px;overflow:hidden;height:300px}.ha .art{width:100%;height:100%;display:block}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px;margin:16px 0 28px}.g3{grid-template-columns:repeat(3,1fr);margin:16px 0 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.ch{cursor:pointer}.ch:hover{transform:translateY(-5px);box-shadow:0 16px 32px #0002}.ch>.art{display:block;width:100%;height:130px}.ch:active{transform:scale(.98)}
+.p{padding:16px}.p h3{margin:8px 0 4px;font-size:1rem}.sc .p svg{color:var(--red);margin-bottom:6px}
+.tag{display:inline-block;font-size:.62rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--red);background:var(--soft);padding:3px 10px;border-radius:99px}
+.btn{background:var(--red);color:#fff;border:0;border-radius:12px;padding:12px 22px;font-weight:600;font-size:.88rem;cursor:pointer;display:inline-flex;gap:8px;align-items:center;justify-content:center;transition:transform .15s,filter .2s,box-shadow .2s}.btn:hover{filter:brightness(1.1);box-shadow:0 8px 20px #F0302B55}.btn:active{transform:scale(.95)}
+.btn.g{background:var(--card);color:var(--ink);border:1px solid var(--line);box-shadow:none}.w{width:100%;margin-top:14px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:26px 0 4px;flex-wrap:wrap}.row a,.rd,.back{color:var(--red);cursor:pointer;font-size:.85rem;font-weight:500;display:inline-block}.back{margin:6px 0 14px}
+.split{display:grid;grid-template-columns:1.5fr 1fr;gap:18px;align-items:start}.split2{display:grid;grid-template-columns:300px 1fr;gap:18px;align-items:start}
+.cov .art{width:100%;height:250px;display:block}
+select,.prof input{width:100%;padding:11px 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;font-size:.85rem;margin:4px 0 12px}
+.chips{display:flex;gap:8px;overflow-x:auto;margin:14px 0;padding-bottom:4px;scrollbar-width:none}.chip{white-space:nowrap;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 16px;border-radius:99px;font-size:.8rem;cursor:pointer;transition:.2s}.chip:hover{border-color:var(--red)}.chip.on{background:var(--red);border-color:var(--red);color:#fff}
+.bar{height:6px;background:var(--line);border-radius:9px;overflow:hidden;margin:10px 0 6px}.bar i{display:block;height:100%;background:var(--red);border-radius:9px;transition:width .6s}
+.step{display:flex;gap:12px;align-items:center;padding:9px 0;cursor:pointer;font-size:.9rem;user-select:none}.step span{width:22px;height:22px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;transition:.25s}.step.ok span{background:var(--ink);border-color:var(--ink);color:var(--bg);transform:scale(1.08)}.step.ok{color:var(--mut)}
+.th{border-radius:12px;overflow:hidden;aspect-ratio:4/3}.th .art{width:100%;height:100%;display:block}
+.lk{display:flex;gap:14px;font-size:.78rem;color:var(--mut);margin-top:8px}.lk>*{display:flex;gap:5px;align-items:center;cursor:pointer;background:none;border:0;color:inherit;font-size:inherit}.lk .on{color:var(--red)}.lk .on svg{fill:var(--red);animation:pop .35s}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.n{font-size:2rem;font-weight:700;display:block}
+.prof{text-align:center}.av{width:104px;height:104px;border-radius:50%;overflow:hidden;border:3px solid var(--red);margin:0 auto 12px}.prof .btn{margin-top:14px}
+.ov{position:fixed;inset:0;background:#0B0B0Ed0;backdrop-filter:blur(8px);display:grid;place-items:center;opacity:0;pointer-events:none;transition:.3s;z-index:60;padding:16px}.ov.on{opacity:1;pointer-events:auto}
+.modal{background:var(--card);border-radius:26px;padding:28px;width:min(100%,420px);text-align:center;transform:scale(.92);transition:.35s cubic-bezier(.2,.8,.2,1)}.ov.on .modal{transform:none}
+.ring{position:relative;width:190px;height:190px;margin:16px auto}.ring svg{transform:rotate(-90deg)}.tr{fill:none;stroke:var(--line);stroke-width:8}.pg{fill:none;stroke:var(--red);stroke-width:8;stroke-linecap:round;stroke-dasharray:100;transition:stroke-dashoffset 1s linear}.ring b{position:absolute;inset:0;display:grid;place-items:center;font-size:2.3rem}
+.acts{display:flex;gap:10px;justify-content:center;margin-bottom:12px}
+#ts{position:fixed;left:50%;bottom:calc(30px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);background:var(--ink);color:var(--bg);padding:12px 20px;border-radius:14px;font-size:.85rem;opacity:0;pointer-events:none;transition:.35s;z-index:70;max-width:90vw;text-align:center}#ts.on{opacity:1;transform:translate(-50%,0)}
+.bn{display:none}
+.in>*{animation:up .55s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i,0)*70ms)}
+.in .grid>*{animation:up .55s cubic-bezier(.2,.7,.2,1) both}.in .grid>:nth-child(2){animation-delay:.08s}.in .grid>:nth-child(3){animation-delay:.16s}.in .grid>:nth-child(4){animation-delay:.24s}.in .grid>:nth-child(n+5){animation-delay:.3s}
+@keyframes up{from{opacity:0;transform:translateY(16px)}}@keyframes pop{50%{transform:scale(1.5)}}@keyframes fl{50%{transform:translateY(-12px)}}
+.fl{animation:fl 5s ease-in-out infinite;transform-box:fill-box}
+@media(max-width:900px){
+.side{display:none}.main{margin:0;padding:0 16px calc(96px + env(safe-area-inset-bottom,0px))}.lg{display:block}.me b{display:none}
+.bn{display:flex;position:fixed;left:0;right:0;bottom:0;background:#0B0B0E;padding:8px 6px calc(8px + env(safe-area-inset-bottom,0px));z-index:30;justify-content:space-around;border-radius:20px 20px 0 0}
+.bn .nv{flex-direction:column;gap:2px;font-size:.62rem;padding:8px 4px;margin:0;width:auto;flex:1;align-items:center;text-align:center}.bn .nv:hover{transform:none}
+.hero,.split,.split2{grid-template-columns:1fr}.hero{padding:22px}.ha{height:200px}.sw{max-width:none}
+.grid{grid-template-columns:repeat(2,1fr);gap:12px}.ch>.art{height:100px}.stats{gap:8px}.stats .p{padding:12px}.n{font-size:1.5rem}.cov .art{height:180px}
+#ts{bottom:calc(96px + env(safe-area-inset-bottom,0px))}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<aside class="side"><div class="logo">DESIGNE</div><nav id="sn"></nav><div class="quote">Sua criatividade<br><b>é o que te move. Continue!</b><hr></div></aside>
+<div class="main">
+<header class="tb"><span class="lg">DESIGNE</span>
+<div class="sw"><span class="si" id="si"></span><input id="q" placeholder="Buscar desafios, exercícios, projetos…" autocomplete="off" aria-label="Buscar"><div id="sr"></div></div><span class="sp"></span>
+<div class="nw"><button class="ib" id="bl" aria-label="Notificações"></button><div id="np"></div></div>
+<button class="ib" id="th" aria-label="Tema"></button>
+<button class="me" onclick="go('perfil')"><span id="ma"></span><b>Lucas</b></button></header>
+<main id="v"></main></div>
+<nav class="bn" id="bn"></nav><div class="ov" id="ov"></div><div id="ts"></div>
+<script>
+const $=s=>document.querySelector(s),L=(()=>{try{return localStorage}catch(e){return null}})();
+const D=()=>({done:8,days:12,works:[],steps:{},likes:{},name:'Lucas',bio:'“Melhorando um pouco todo dia.”',cur:1});
+let S=D();try{Object.assign(S,JSON.parse(L.getItem('dsg')||'{}'))}catch(e){}
+const save=()=>{try{L.setItem('dsg',JSON.stringify(S))}catch(e){}};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>'&#'+c.charCodeAt(0)+';');
+const I={home:'M3 11l9-8 9 8v10H3z',bolt:'M13 2L4 14h7l-1 8 9-12h-7z',pen:'M12 20h9M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z',folder:'M3 7h7l2 2h9v11H3z',users:'M17 21v-2a4 4 0 00-4-4H7a4 4 0 00-4 4v2M10 11a4 4 0 100-8 4 4 0 000 8M21 21v-2a4 4 0 00-3-3.9M16 3.1a4 4 0 010 7.8',search:'M11 19a8 8 0 100-16 8 8 0 000 16zM21 21l-4.3-4.3',bell:'M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 01-3.4 0',heart:'M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 00-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 000-7.8z',arrow:'M5 12h14M12 5l7 7-7 7',check:'M20 6L9 17l-5-5',user:'M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8',msg:'M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z',clock:'M12 22a10 10 0 100-20 10 10 0 000 20zM12 6v6l4 2',moon:'M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z'};
+const ic=(n,s=20)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="${I[n]}"/></svg>`;
+function art(s,cls=''){let x=s*7919+13;const r=n=>(x=(x*16807)%2147483647)/2147483647*n,k=s%3==1,ik=k?'#F7F3F0':'#0B0B0E';
+let o=`<svg class="art ${cls}" viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice"><rect width="400" height="260" fill="${k?'#17171C':s%3==2?'#E9E4DE':'#FBF6F2'}"/><circle class="fl" cx="${60+r(280)}" cy="${50+r(90)}" r="${24+r(30)}" fill="#F0302B"/>`;
+for(let i=0;i<3;i++)o+=`<path d="M${r(400)} ${r(260)}Q${r(400)} ${r(260)} ${r(400)} ${r(260)}" stroke="${i?'#F0302B':ik}" stroke-width="${6+r(16)}" fill="none" stroke-linecap="round" opacity=".85"/>`;
+o+=`<rect x="${r(300)}" y="${100+r(100)}" width="${20+r(50)}" height="${50+r(80)}" fill="${ik}" transform="rotate(${r(30)-15})"/>`;
+for(let i=0;i<6;i++)o+=`<path d="M${r(400)} ${r(260)}l${r(80)-40} ${r(80)-40}" stroke="${k?'#999':'#333'}" stroke-width="1"/>`;
+return o+'</svg>'}
+const C=[[1,'Cidade em ruínas','Desenho','Intermediário',20,'Explore a atmosfera de uma cidade abandonada usando apenas duas cores.'],[2,'Expressões em foco','Personagens','Iniciante',15,'Desenhe um rosto que mostre três emoções ao mesmo tempo.'],[3,'Paisagens minimalistas','Cenários','Avançado',30,'Uma paisagem inteira em no máximo cinco formas.'],[4,'Objetos do cotidiano','Natureza-morta','Todos os níveis',20,'Escolha três objetos da sua mesa e desenhe a sombra de cada um.'],[5,'Anatomia básica','Anatomia','Iniciante',15,'Uma figura humana em movimento, só com formas simples.'],[6,'Perspectiva urbana','Perspectiva','Intermediário',20,'Uma rua com dois pontos de fuga.'],[7,'Composição de cena','Composição','Intermediário',20,'Uma cena de café em que o foco é a xícara.'],[8,'Luz e sombra','Luz e Sombra','Avançado',15,'Um retrato iluminado por uma única lâmpada.'],[9,'Letras com personalidade','Lettering','Iniciante',15,'Escreva seu nome em três estilos diferentes.']].map(([id,t,c,l,m,d])=>({id,t,c,l,m,d}));
+const PJ=[{n:'Projeto — HQ',sb:'Minha primeira história',st:['Ideia','Roteiro','Rascunho','Arte-final','Lettering','Revisão']},{n:'Estudos de luz',sb:'Série semanal',st:['Referências','Esboços','Sombras','Revisão']}];
+const PO=[['@mariana.art',11,342,12],['@pedro.desenha',12,215,8],['@luis.ilustra',13,498,20],['@ana.traco',14,127,5],['@kaio.ink',15,301,9],['@bia.cor',16,88,3]];
+const N=[['inicio','Início','home'],['desafios','Desafios','bolt'],['praticar','Praticar','pen'],['projetos','Projetos','folder'],['comunidade','Comunidade','users']];
+let cat='Todas',pc=null,tab=0,ct=0,ed=0,T=null;
+const stp=i=>S.steps[i]||(S.steps[i]=PJ[i].st.map((_,k)=>i==0&&k<3));
+const cur=()=>C.find(x=>x.id==S.cur)||C[0];
+const ccard=c=>`<article class="card ch" onclick="openC(${c.id})">${art(c.id)}<div class="p"><span class="tag">${c.c}</span><h3>${c.t}</h3><p class="m">${c.l} · ${c.m} min</p></div></article>`;
+const sel=(i,l,o,v)=>`<label class="m" for="s${i}">${l}</label><select id="s${i}">${o.map(x=>`<option${x==v?' selected':''}>${x}</option>`).join('')}</select>`;
+const wk=()=>[...S.works,{s:31},{s:32},{s:33},{s:34}].slice(0,8).map(w=>`<div class="th">${art(w.s)}</div>`).join('');
+const V={
+inicio:()=>`<section class="hero"><div><p class="m">Olá, ${esc(S.name)}!</p><p class="m">Que tal dar forma às suas ideias hoje?</p><h1>Dê forma<br>às suas <b>ideias.</b></h1><p class="lead">Desafios, exercícios, projetos e uma comunidade para te ajudar a criar, evoluir e compartilhar.</p><button class="btn" onclick="go('desafios')">Explorar agora ${ic('arrow',16)}</button></div><div class="ha">${art(5)}</div></section>
+<div class="grid sc">${[['bolt','Desafiar','Receba prompts criativos e saia da zona de conforto.','desafios'],['pen','Praticar','Exercícios para desenvolver suas habilidades.','praticar'],['folder','Projetos','Organize suas ideias em etapas e acompanhe seu progresso.','projetos'],['users','Comunidade','Compartilhe seus trabalhos e conecte-se com outros criadores.','comunidade']].map(([i,t,d,g])=>`<div class="card ch p" onclick="go('${g}')">${ic(i,26)}<h3>${t}</h3><p class="m">${d}</p></div>`).join('')}</div>
+<div class="row"><h2>Desafios em destaque</h2><a onclick="go('praticar')">Ver todos →</a></div><div class="grid">${C.slice(0,4).map(ccard).join('')}</div>`,
+desafios:()=>{const c=cur();return `<a class="back" onclick="go('inicio')">← Voltar</a><div class="split"><div class="card"><div class="cov">${art(c.id)}</div><div class="p"><span class="tag">${c.c}</span><h2 style="margin:8px 0 4px">${c.t}</h2><p class="m">${c.l} · ${c.m} min</p><p style="margin-top:10px">${c.d}</p><button class="btn w" onclick="start()">Começar desafio ${ic('arrow',16)}</button></div></div>
+<aside class="card p"><h3>Escolha suas preferências</h3><br>${sel(0,'Tema',['Cidade','Natureza','Retrato','Objetos'])}${sel(1,'Estilo',['Sketch','Tinta','Minimalista'])}${sel(2,'Dificuldade',['Iniciante','Intermediário','Avançado','Todos os níveis'],c.l)}${sel(3,'Tempo',['10 minutos','15 minutos','20 minutos','30 minutos'],c.m+' minutos')}<p class="m">Não sabe o que criar?</p><a class="rd" onclick="shuffle()">↻ Gerar outro desafio</a></aside></div>`},
+praticar:()=>`<h1 class="h">Praticar</h1><p class="m">Escolha uma categoria e desenvolva suas habilidades.</p><div class="chips">${['Todas','Anatomia','Perspectiva','Composição','Luz e Sombra','Personagens','Lettering'].map(k=>`<button class="chip${k==cat?' on':''}" onclick="cat='${k}';render()">${k}</button>`).join('')}</div><div class="grid">${C.filter(c=>cat=='Todas'||c.c==cat).map(ccard).join('')||'<p class="m">Nenhum exercício nesta categoria ainda.</p>'}</div>`,
+projetos:()=>{if(pc===null)return `<div class="row"><h1 class="h">Meus projetos</h1><button class="btn" onclick="toast('Função de exemplo: novo projeto')">+ Novo projeto</button></div><div class="grid">${PJ.map((p,i)=>{const d=stp(i).filter(Boolean).length;return `<article class="card ch" onclick="pc=${i};render()">${art(20+i)}<div class="p"><h3>${p.n}</h3><p class="m">${p.sb}</p><div class="bar"><i style="width:${d/p.st.length*100}%"></i></div><p class="m">${d} de ${p.st.length} etapas</p></div></article>`}).join('')}</div>`;
+const p=PJ[pc],s=stp(pc),d=s.filter(Boolean).length;
+return `<a class="back" onclick="pc=null;render()">← Meus projetos</a><div class="split"><div class="card p"><h2>${p.n}</h2><p class="m">${p.sb}</p><div class="bar"><i style="width:${d/s.length*100}%"></i></div><p class="m" style="margin-bottom:8px">${d} de ${s.length} etapas</p>${p.st.map((n,k)=>`<div class="step${s[k]?' ok':''}" onclick="tg(${k})"><span>${s[k]?ic('check',13):''}</span>${n}</div>`).join('')}<button class="btn g w" onclick="toast('Função de exemplo: projeto completo')">Ver projeto completo</button></div>
+<div class="card p"><div class="chips">${['Rascunho','Arte-final','Outros'].map((t,k)=>`<button class="chip${k==tab?' on':''}" onclick="tab=${k};render(1)">${t}</button>`).join('')}</div><div class="grid g3">${[1,2,3,4,5,6].map(k=>`<div class="th">${art(40+tab*7+k)}</div>`).join('')}</div></div></div>`},
+comunidade:()=>{const l=ct==0?PO.map((p,i)=>[p,i]):ct==1?PO.map((p,i)=>[p,i]).filter(x=>x[1]%2==0):S.works.map((w,i)=>[['@lucas.art',w.s,0,0],i+10]);
+return `<h1 class="h">Comunidade</h1><p class="m">Compartilhe, veja e se inspire.</p><div class="chips">${['Explorar','Seguindo','Meus posts'].map((t,k)=>`<button class="chip${k==ct?' on':''}" onclick="ct=${k};render()">${t}</button>`).join('')}</div>
+<div class="split2" style="grid-template-columns:1fr 280px"><div class="grid">${l.map(([p,i])=>`<div class="card"><div class="th" style="border-radius:0;aspect-ratio:1">${art(p[1])}</div><div class="p"><p class="m">${p[0]}</p><div class="lk"><button class="${S.likes[i]?'on':''}" onclick="lk(${i},this,${p[2]})">${ic('heart',16)}<b>${p[2]+(S.likes[i]?1:0)}</b></button><span>${ic('msg',16)}${p[3]}</span></div></div></div>`).join('')||'<p class="m">Você ainda não publicou. Conclua um desafio e seus trabalhos aparecem aqui.</p>'}</div>
+<aside class="card p"><h3>Participe dos desafios semanais</h3><p class="m">e compartilhe seu progresso!</p><button class="btn w" onclick="go('desafios')">Ver desafio</button></aside></div>`},
+perfil:()=>`<div class="split2" style="margin-top:8px"><div class="card p prof"><div class="av">${art(77)}</div>${ed?`<input id="nn" value="${esc(S.name)}" aria-label="Nome"><input id="nb" value="${esc(S.bio)}" aria-label="Bio">`:`<h2>${esc(S.name)}</h2><p class="m">@lucas.art</p><p style="margin-top:8px">${esc(S.bio)}</p>`}<button class="btn g" onclick="editP()">${ed?'Salvar':'Editar perfil'}</button></div>
+<div><div class="stats">${[['Projetos em andamento',PJ.length],['Desafios concluídos',S.done],['Dias de prática',S.days]].map(([a,b])=>`<div class="card p"><p class="m">${a}</p><b class="n" data-n="${b}">0</b></div>`).join('')}</div><div class="row"><h2>Últimos trabalhos</h2><a onclick="rs()">Reiniciar demo</a></div><div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(130px,1fr))">${wk()}</div></div></div>`};
+function render(k){const h=location.hash.slice(1),v=V[h]?h:'inicio',m=$('#v');m.className=k?'':'in';m.innerHTML=V[v]();
+if(!k){scrollTo(0,0);[...m.children].forEach((e,i)=>e.style.setProperty('--i',i))}
+document.querySelectorAll('[data-v]').forEach(a=>a.classList.toggle('on',a.dataset.v==v));
+document.querySelectorAll('[data-n]').forEach(e=>{const n=+e.dataset.n,t0=performance.now(),f=t=>{const p=Math.min(1,(t-t0)/700);e.textContent=Math.round(n*p);p<1&&requestAnimationFrame(f)};requestAnimationFrame(f)});
+$('.me b').textContent=S.name}
+const go=v=>{location.hash==='#'+v?render():location.hash=v};
+const openC=id=>{S.cur=id;save();go('desafios')};
+function toast(t){const e=$('#ts');e.textContent=t;e.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('on'),2600)}
+function shuffle(){const o=C.filter(x=>x.id!=S.cur);S.cur=o[Math.random()*o.length|0].id;save();render();toast('Novo desafio gerado!')}
+function start(){const c=cur();runT(c,(parseInt($('#s3').value)||c.m)*60)}
+function runT(c,tot){clearInterval(T);let left=tot,ps=0;const o=$('#ov');
+o.innerHTML=`<div class="modal"><span class="tag">${c.c}</span><h2 style="margin:10px 0 4px">${c.t}</h2><p class="m">${c.d}</p><div class="ring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="54" class="tr"/><circle id="rg" cx="60" cy="60" r="54" class="pg" pathLength="100"/></svg><b id="tm"></b></div><div class="acts"><button class="btn g" id="pz">Pausar</button><button class="btn" id="fin">Concluir</button></div><a class="rd" id="can">Cancelar</a></div>`;
+o.classList.add('on');
+const draw=()=>{$('#tm').textContent=String(left/60|0).padStart(2,'0')+':'+String(left%60).padStart(2,'0');$('#rg').style.strokeDashoffset=100-left/tot*100};
+const end=()=>{clearInterval(T);o.classList.remove('on')};
+const done=()=>{end();S.done++;S.works.unshift({s:c.id*3+S.done,t:c.t});S.works=S.works.slice(0,8);save();toast('Desafio concluído! Seu trabalho foi salvo no perfil.')};
+T=setInterval(()=>{if(ps)return;left--;draw();if(left<=0)done()},1000);
+$('#pz').onclick=e=>{ps=!ps;e.target.textContent=ps?'Retomar':'Pausar'};$('#fin').onclick=done;$('#can').onclick=end;draw()}
+function tg(k){const s=stp(pc);s[k]=!s[k];save();render(1)}
+function lk(i,el,n){S.likes[i]=!S.likes[i];save();el.classList.toggle('on',!!S.likes[i]);el.querySelector('b').textContent=n+(S.likes[i]?1:0)}
+function editP(){if(ed){S.name=$('#nn').value.trim()||'Lucas';S.bio=$('#nb').value;save();toast('Perfil atualizado')}ed=!ed;render(1)}
+function rs(){S=D();save();render();toast('Demo reiniciada')}
+const nav=(c)=>N.map(([v,t,i])=>`<button class="nv" data-v="${v}" onclick="go('${v}')">${ic(i,c)}${t}</button>`).join('');
+$('#sn').innerHTML=nav(20);$('#bn').innerHTML=nav(22);$('#si').innerHTML=ic('search',18);$('#bl').innerHTML=ic('bell',18)+'<i class="dot"></i>';$('#th').innerHTML=ic('moon',18);$('#ma').innerHTML=art(77);
+$('#np').innerHTML=['Novo desafio semanal disponível','@mariana.art curtiu seu trabalho','Você está em uma sequência de 12 dias!'].map(t=>`<p>${t}</p>`).join('');
+$('#bl').onclick=()=>{$('#np').classList.toggle('on');const d=$('#bl .dot');d&&d.remove()};
+const dk=()=>document.documentElement.dataset.theme?document.documentElement.dataset.theme=='dark':matchMedia('(prefers-color-scheme:dark)').matches;
+if(S.theme)document.documentElement.dataset.theme=S.theme;
+$('#th').onclick=()=>{S.theme=dk()?'light':'dark';document.documentElement.dataset.theme=S.theme;save()};
+const q=$('#q'),sr=$('#sr');
+q.oninput=()=>{const t=q.value.trim().toLowerCase();if(!t){sr.innerHTML='';return}
+const r=[...C.filter(c=>(c.t+c.c+c.d).toLowerCase().includes(t)).map(c=>`<div onclick="openC(${c.id});q.value='';sr.innerHTML=''">${c.t}<small>${c.c}</small></div>`),...PJ.filter(p=>p.n.toLowerCase().includes(t)).map(p=>`<div onclick="pc=${PJ.indexOf(p)};q.value='';sr.innerHTML='';go('projetos')">${p.n}<small>Projeto</small></div>`)];
+sr.innerHTML=r.join('')||'<div><small>Nenhum resultado para “'+esc(t)+'”</small></div>'};
+q.onkeydown=e=>{if(e.key=='Enter'){const f=sr.querySelector('div[onclick]');f?f.click():toast('Nenhum resultado encontrado')}};
+document.addEventListener('click',e=>{if(!e.target.closest('.sw'))sr.innerHTML='';if(!e.target.closest('.nw'))$('#np').classList.remove('on')});
+document.addEventListener('keydown',e=>{if(e.key=='Escape')$('#ov').classList.remove('on'),clearInterval(T);if(e.key=='/'&&document.activeElement.tagName!='INPUT'){e.preventDefault();q.focus()}});
+addEventListener('hashchange',()=>render());render();
+</script></body></html>
